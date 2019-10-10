@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  sql-data-test:
+    image: microsoft/mssql-server-linux:2017-latest
+  lanre-clients-host-unit-tests:
+    image: ${DOCKER_REGISTRY-}lanreclientshost-unit-test:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Src/Clients/Lanre.Clients.Host/Dockerfile.tests
+      target: unittest
+    depends_on:
+      - sql-data-test
+  lanre-clients-host-integration-tests:
+    image: ${DOCKER_REGISTRY-}lanreclientshost-integration-test:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Src/Clients/Lanre.Clients.Host/Dockerfile.tests
+      target: integrationtest
+    depends_on:
+      - sql-data-test
+  

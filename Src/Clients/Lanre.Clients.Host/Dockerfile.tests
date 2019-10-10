@@ -1,0 +1,34 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+WORKDIR /src
+COPY ["Src/Directory.Build.props", "Src/Directory.Build.props"]
+COPY ["Src/_configuration", "Src/_configuration"]
+COPY ["Src/Clients/Lanre.Clients.Host/Lanre.Clients.Host.csproj", "Src/Clients/Lanre.Clients.Host/"]
+COPY ["Src/Data/Lanre.Data/Lanre.Data.csproj", "Src/Data/Lanre.Data/"]
+COPY ["Src/Domain/Lanre.Domain/Lanre.Domain.csproj", "Src/Domain/Lanre.Domain/"]
+COPY ["Src/Infrastructure/Lanre.Infrastructure/Lanre.Infrastructure.csproj", "Src/Infrastructure/Lanre.Infrastructure/"]
+COPY ["Src/Clients/Lanre.Clients.Api/Lanre.Clients.Api.csproj", "Src/Clients/Lanre.Clients.Api/"]
+COPY ["Src/Application/Lanre.Application/Lanre.Application.csproj", "Src/Application/Lanre.Application/"]
+COPY ["Src/Tests/Lanre.Tests.Core/Lanre.Tests.Core.csproj", "Src/Tests/Lanre.Tests.Core/"]
+COPY ["Src/Tests/Lanre.Tests.Integration/Lanre.Tests.Integration.csproj", "Src/Tests/Lanre.Tests.Integration/"]
+COPY ["Src/Tests/Lanre.Tests.Unit/Lanre.Tests.Unit.csproj", "Src/Tests/Lanre.Tests.Unit/"]
+RUN dotnet restore "Src/Clients/Lanre.Clients.Host/Lanre.Clients.Host.csproj"
+RUN dotnet restore "Src/Tests/Lanre.Tests.Unit/Lanre.Tests.Unit.csproj"
+RUN dotnet restore "Src/Tests/Lanre.Tests.Integration/Lanre.Tests.Integration.csproj"
+COPY . .
+WORKDIR "/src/Src/Tests/Lanre.Tests.Integration"
+RUN dotnet build "Lanre.Tests.Integration.csproj" -c Release -o /app
+
+WORKDIR "/src/Src/Tests/Lanre.Tests.Unit"
+RUN dotnet build "Lanre.Tests.Unit.csproj" -c Release -o /app
+
+
+FROM build as unittest
+WORKDIR /src/Src/Tests/Lanre.Tests.Unit
+
+FROM build as integrationtest
+WORKDIR /src/Src/Tests/Lanre.Tests.Integration

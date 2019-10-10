@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  sql.data:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"  
+  lanre.clients.host:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=52443
+      - HttpsConfig__Port=52443
+      - ConnectionStrings__Lanre=${LANRE_DB:-Server=sql.data;Database=Lanre.LanreDb;User Id=sa;Password=Pass@word}
+    ports:
+      - "5280:80"
+      - "52443:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

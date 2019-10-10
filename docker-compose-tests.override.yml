@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+  sql-data-test:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"  
+  lanre-clients-host-unit-tests:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=5444
+      - HttpsConfig__Port=5444
+      - ConnectionStrings__Lanre=${LANRE_DB:-Server=sql-data-test;Database=Lanre.LanreDb.Test;User Id=sa;Password=Pass@word}
+    ports:
+      - "5113:80"
+      - "5444:443"
+    entrypoint:
+        - dotnet
+        - test
+        - --logger
+        - trx;LogFileName=/tests/lante-clients-host-unit-test-results.xml
+    volumes: 
+      - ${BUILD_ARTIFACTSTAGINGDIRECTORY:-./tests-results/}:/tests
+  lanre-clients-host-integration-tests:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=5443
+      - HttpsConfig__Port=5443
+      - ConnectionStrings__Lanre=${LANRE_DB:-Server=sql-data-test;Database=Lanre.LanreDb.Test;User Id=sa;Password=Pass@word}
+      - Database__UseInMemory=false
+      - Database__Migrate=true
+      - Database__EnsureDeleted=false
+    ports:
+      - "5114:80"
+      - "5443:443"
+    entrypoint:
+        - dotnet
+        - test
+        - --logger
+        - trx;LogFileName=/tests/lante-clients-host-integration-test-results.xml
+    volumes: 
+      - ${BUILD_ARTIFACTSTAGINGDIRECTORY:-./tests-results/}:/tests
+  

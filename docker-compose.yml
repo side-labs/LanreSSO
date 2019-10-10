@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  sql.data:
+    image: microsoft/mssql-server-linux:2017-latest
+  lanre.clients.host:
+    image: ${DOCKER_REGISTRY-}lanreclientshost:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Src/Clients/Lanre.Clients.Host/Dockerfile
+    depends_on:
+      - sql.data
+  

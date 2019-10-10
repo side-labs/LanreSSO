@@ -1,0 +1,66 @@
+<Project>
+  <PropertyGroup Label="SDK Versions">
+    <NetStandardTargetVersion>netstandard2.0</NetStandardTargetVersion>
+    <NetCoreTargetVersion>netcoreapp2.2</NetCoreTargetVersion>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+
+  <PropertyGroup Label="Microsoft Package Versions">
+    <MicrosoftAspnetCoreHostingPackageVersion>2.2.0</MicrosoftAspnetCoreHostingPackageVersion>
+    <MicrosoftExtensionsConfigurationJsonPackageVersion>2.2.0</MicrosoftExtensionsConfigurationJsonPackageVersion>
+    <MicrosoftExtensionsConfigurationUserSecretsPackageVersion>2.2.0</MicrosoftExtensionsConfigurationUserSecretsPackageVersion>
+    <MicrosoftExtensionsDependencyInjectionPackageVersion>2.2.0</MicrosoftExtensionsDependencyInjectionPackageVersion>
+    <MicrosoftHttpAbstractionsPackageVersion>2.2.0</MicrosoftHttpAbstractionsPackageVersion>
+    <MicrosoftMvcApiExplorerPackageVersion>2.2.0</MicrosoftMvcApiExplorerPackageVersion>
+    <MicrosoftMvcCorePackageVersion>2.2.5</MicrosoftMvcCorePackageVersion>
+    <MicrosoftMvcFormattersJsonPackageVersion>2.2.0</MicrosoftMvcFormattersJsonPackageVersion>
+    <MicrosoftMvcVersioningPackageVersion>3.1.5</MicrosoftMvcVersioningPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package Versions Microsoft EF">
+    <MicrosoftEntityFrameworkCorePackageVersion>2.2.1</MicrosoftEntityFrameworkCorePackageVersion>
+    <MicrosoftEntityFrameworkCoreDesignPackageVersion>2.2.1</MicrosoftEntityFrameworkCoreDesignPackageVersion>
+    <MicrosoftEntityFrameworkCoreInMemoryPackageVersion>2.2.1</MicrosoftEntityFrameworkCoreInMemoryPackageVersion>
+    <MicrosoftEntityFrameworkCoreRelationalPackageVersion>2.2.1</MicrosoftEntityFrameworkCoreRelationalPackageVersion>
+    <MicrosoftEntityFrameworkCoreSqlServerPackageVersion>2.2.1</MicrosoftEntityFrameworkCoreSqlServerPackageVersion>
+    <MicrosoftEntityFrameworkCoreToolsPackageVersion>2.2.1</MicrosoftEntityFrameworkCoreToolsPackageVersion>
+    <MicrosoftExtensionsCachingMemoryPackageVersion>2.2.0</MicrosoftExtensionsCachingMemoryPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package Versions">
+    <AspNetCoreHealthChecksSqlServerPackageVersion>2.2.1</AspNetCoreHealthChecksSqlServerPackageVersion>
+    <FluentValidationAspNetCorePackageVersion>8.4.0</FluentValidationAspNetCorePackageVersion>
+    <MediatRPackageVersion>7.0.0</MediatRPackageVersion>
+    <MediatRExtensionsMicrosoftDependencyInjectionPackageVersion>7.0.0</MediatRExtensionsMicrosoftDependencyInjectionPackageVersion>
+    <SwashbuckleAspNetCorePackageVersion>4.0.1</SwashbuckleAspNetCorePackageVersion>
+    <SwashbuckleAspNetCoreAnnotationsPackageVersion>4.0.1</SwashbuckleAspNetCoreAnnotationsPackageVersion>
+    <StyleCopAnalizersPackageVersion>1.1.118</StyleCopAnalizersPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package Versions Loggers">
+    <SerilogAspNetCorePackageVersion>2.1.1</SerilogAspNetCorePackageVersion>
+    <SerilogExtensionsLoggingPackageVersion>2.0.4</SerilogExtensionsLoggingPackageVersion>
+    <SerilogEnrichersCorrelationIdPackageVersion>1.0.1</SerilogEnrichersCorrelationIdPackageVersion>
+    <SerilogSinksAzureAppPackageVersion>2.1.2</SerilogSinksAzureAppPackageVersion>
+    <SerilogSinksColoredConsolePackageVersion>3.0.1</SerilogSinksColoredConsolePackageVersion>
+    <SerilogSinksConsolePackageVersion>3.1.1</SerilogSinksConsolePackageVersion>
+    <SerilogSinksFilePackageVersion>4.0.0</SerilogSinksFilePackageVersion>
+    <SerilogSinksRollingFileAlternatePackageVersion>3.3.0</SerilogSinksRollingFileAlternatePackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package Versions Testing">
+    <CoverletMsbuildPackageVersion>2.6.3</CoverletMsbuildPackageVersion>
+    <FluentAssertionsPackageVersion>5.8.0</FluentAssertionsPackageVersion>
+    <MicrosoftNETTestSdkPackageVersion>16.2.0</MicrosoftNETTestSdkPackageVersion>
+    <MicrosoftTestHostPackageVersion>2.2.0</MicrosoftTestHostPackageVersion>
+    <XunitPackageVersion>2.4.1</XunitPackageVersion>
+    <XunitRunnerVisualStudioPackageVersion>2.4.1</XunitRunnerVisualStudioPackageVersion>
+    <MoqPackageVersion>4.12.0</MoqPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Tooling">
+    <DotnetXunit>2.3.1</DotnetXunit>
+    <DotnetReportgeneratorCli>4.0.5</DotnetReportgeneratorCli>
+  </PropertyGroup>
+</Project>
