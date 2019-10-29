@@ -5,7 +5,6 @@ namespace Lanre.Clients.Host.Infrastructure.Middlewares
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
-    using StackExchange.Profiling;
 
     public class MiniprofilerMiddleware
     {

@@ -2,7 +2,7 @@
 
 namespace Lanre.Data.Contexts.Lanre
 {
-    using global::Lanre.Domain.Entities;
+    using Domain.Users;
     using global::Lanre.Infrastructure.Data;
     using global::Lanre.Infrastructure.Entities;
     using Microsoft.EntityFrameworkCore;

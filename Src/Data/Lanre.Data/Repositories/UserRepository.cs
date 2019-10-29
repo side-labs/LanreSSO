@@ -3,9 +3,9 @@
 namespace Lanre.Data.Repositories
 {
     using System;
+    using Domain.Users;
     using Lanre.Data.Contexts.Lanre;
     using Lanre.Data.Repositories.Core;
-    using Lanre.Domain.Entities;
 
     public class UserRepository : Repository<User, Guid>
     {

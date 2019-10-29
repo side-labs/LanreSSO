@@ -3,10 +3,10 @@
 namespace Lanre.Data
 {
     using System;
+    using Domain.Users;
     using Lanre.Data.Contexts.Lanre;
     using Lanre.Data.Repositories;
     using Lanre.Data.Repositories.Core;
-    using Lanre.Domain.Entities;
     using Lanre.Infrastructure.Entities;
     using Lanre.Infrastructure.Repository;
     using Microsoft.Extensions.DependencyInjection;

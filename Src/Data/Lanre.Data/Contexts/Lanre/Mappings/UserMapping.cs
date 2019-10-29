@@ -2,7 +2,7 @@
 
 namespace Lanre.Data.Mappings
 {
-    using Lanre.Domain.Entities;
+    using Domain.Users;
     using Lanre.Infrastructure.Data;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

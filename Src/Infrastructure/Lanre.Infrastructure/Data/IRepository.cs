@@ -3,7 +3,6 @@
 namespace Lanre.Infrastructure.Repository
 {
     using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Lanre.Infrastructure.Entities;
 
     public interface IRepository<TEntity, TKey> : IRepositoryReadOnly<TEntity, TKey>

@@ -5,8 +5,9 @@ namespace Lanre.Application.Commands.UsersCrud
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Lanre.Domain.Entities;
-    using Lanre.Infrastructure.Repository;
+    using CSharpFunctionalExtensions;
+    using Domain.Users;
+    using Infrastructure.Repository;
     using MediatR;
 
     public class UsersCrudHandlers : IRequestHandler<UserCreateCommand, UserIdResponse>,
@@ -24,19 +25,38 @@ namespace Lanre.Application.Commands.UsersCrud
 
         public async Task<UserIdResponse> Handle(UserCreateCommand request, CancellationToken cancellationToken)
         {
-            var user = new User(request.Name, request.Surname);
-            this._userRepository.Add(user);
-            await this._unitOfWork.SaveChangesAsync();
-            return new UserIdResponse() { Id = user.Id };
+            var user = User.Create(request.Name, request.Surname);
+            if (user.IsSuccess)
+            {
+                this._userRepository.Add(user.Value);
+                await this._unitOfWork.SaveChangesAsync();
+            }
+
+            return new UserIdResponse() { Id = user.Value.Id, Result = user};
         }
 
         public async Task<UserIdResponse> Handle(UserUpdateCommand request, CancellationToken cancellationToken)
         {
             var user = await this._userRepository.GetByIdAsync(request.Id);
-            user.Update(request.Name, request.Surname);
-            this._userRepository.Update(user);
-            await this._unitOfWork.SaveChangesAsync();
-            return new UserIdResponse() { Id = user.Id };
+            var resultOfChanging = Result.Combine(
+                user.SetName(request.Name),
+                user.SetSurname(request.Surname));
+            if (resultOfChanging.IsSuccess)
+            {
+                this._userRepository.Update(user);
+                await this._unitOfWork.SaveChangesAsync();
+                return new UserIdResponse()
+                {
+                    Id = user.Id, 
+                    Result = Result.Success<User>(user),
+                };
+            }
+
+            return new UserIdResponse()
+            {
+                Result = resultOfChanging.ConvertFailure<User>(),
+            };
+
         }
 
         public async Task<Unit> Handle(UserDeleteCommand request, CancellationToken cancellationToken)

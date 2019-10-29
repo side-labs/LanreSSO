@@ -8,9 +8,9 @@ namespace Lanre.Application.Queries.UserQueries
     using System.Linq.Expressions;
     using System.Threading;
     using System.Threading.Tasks;
-    using Lanre.Domain.Entities;
-    using Lanre.Infrastructure.Entities;
-    using Lanre.Infrastructure.Repository;
+    using Domain.Users;
+    using Infrastructure.Entities;
+    using Infrastructure.Repository;
     using MediatR;
 
     public class UserQueriesHandler : IRequestHandler<UserQuery, UserQueryResponse>,

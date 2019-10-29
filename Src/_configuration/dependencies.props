@@ -36,6 +36,7 @@
     <SwashbuckleAspNetCorePackageVersion>4.0.1</SwashbuckleAspNetCorePackageVersion>
     <SwashbuckleAspNetCoreAnnotationsPackageVersion>4.0.1</SwashbuckleAspNetCoreAnnotationsPackageVersion>
     <StyleCopAnalizersPackageVersion>1.1.118</StyleCopAnalizersPackageVersion>
+    <CSharpFunctionalExtensions>2.1.1</CSharpFunctionalExtensions>
   </PropertyGroup>
 
   <PropertyGroup Label="Package Versions Loggers">

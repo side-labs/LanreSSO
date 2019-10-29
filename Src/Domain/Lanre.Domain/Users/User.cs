@@ -1,32 +1,54 @@
 // Copyright (c) Lanre. All rights reserved.
 
-namespace Lanre.Domain.Entities
+namespace Lanre.Domain.Users
 {
     using System;
+    using CSharpFunctionalExtensions;
     using Lanre.Infrastructure.Entities;
 
     public class User : AggregateRoot<Guid>
     {
-        public User(string name, string surname)
-            : base(Guid.NewGuid())
-        {
-            this.Name = name;
-            this.Surname = surname;
-        }
-
         private User()
             : base()
         {
         }
 
-        public string Name { get; set; }
+        public string Name { get; private  set; }
 
-        public string Surname { get; set; }
+        public string Surname { get; private set; }
 
-        public void Update(string name, string surname)
+        public static Result<User> Create(string name, string surname)
         {
+            var userToBeCreated = new User();
+            var constraints = Result.Combine("\n",userToBeCreated.SetName(name), userToBeCreated.SetSurname(surname));
+            if (constraints.IsSuccess)
+            {
+                return Result.Ok<User>(userToBeCreated);
+            }
+
+            return Result.Failure<User>(constraints.Error);
+        }
+
+        public Result<User> SetName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return Result.Failure<User>("Name could not be Empty");
+            }
+
             this.Name = name;
+            return Result.Ok<User>(this);
+        }
+
+        public Result<User> SetSurname(string surname)
+        {
+            if (string.IsNullOrWhiteSpace(surname))
+            {
+                return Result.Failure<User>("Surname could not be Empty");
+            }
+
             this.Surname = surname;
+            return Result.Ok<User>(this);
         }
     }
 }

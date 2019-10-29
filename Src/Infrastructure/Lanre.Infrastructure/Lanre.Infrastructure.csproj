@@ -19,6 +19,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(MicrosoftEntityFrameworkCoreInMemoryPackageVersion)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="$(MicrosoftEntityFrameworkCoreRelationalPackageVersion)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(MicrosoftEntityFrameworkCoreSqlServerPackageVersion)" />
+    <PackageReference Include="CSharpFunctionalExtensions" Version="$(CSharpFunctionalExtensions)" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\_configuration\stylecop.json" />

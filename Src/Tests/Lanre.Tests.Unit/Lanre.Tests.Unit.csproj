@@ -29,6 +29,7 @@
     <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
     <PackageReference Include="xunit.runner.visualstudio" Version="$(XunitRunnerVisualStudioPackageVersion)" />
     <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalizersPackageVersion)" PrivateAssets="All" />
+    <PackageReference Include="FluentAssertions" Version="$(FluentAssertionsPackageVersion)" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Lanre.Domain\Lanre.Domain.csproj" />
     <ProjectReference Include="..\Lanre.Tests.Core\Lanre.Tests.Core.csproj" />
   </ItemGroup>
 

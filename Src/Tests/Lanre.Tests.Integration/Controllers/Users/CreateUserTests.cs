@@ -3,14 +3,12 @@
 namespace Lanre.Tests.Integration.Controllers.Users
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
     using FluentAssertions;
     using Lanre.Application.Commands.UsersCrud;
     using Lanre.Application.Queries.UserQueries;
-    using Lanre.Domain.Entities;
     using Xunit;
     using static Lanre.Tests.Core.RoutesConstants;
 

@@ -7,9 +7,9 @@ namespace Lanre.Data.Repositories.Core
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    using Lanre.Infrastructure.Data;
-    using Lanre.Infrastructure.Entities;
-    using Lanre.Infrastructure.Repository;
+    using Infrastructure.Entities;
+    using Infrastructure.Repository;
+    using Infrastructure.Data;
     using Microsoft.EntityFrameworkCore;
 
     public abstract class RepositoryReadOnly<TEntity, TKey> : IRepositoryReadOnly<TEntity, TKey>

@@ -7,9 +7,9 @@ namespace Lanre.Tests.Integration.Controllers.Users
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
+    using Domain.Users;
     using FluentAssertions;
     using Lanre.Application.Queries.UserQueries;
-    using Lanre.Domain.Entities;
     using Xunit;
     using static Lanre.Tests.Core.RoutesConstants;
 
@@ -67,11 +67,11 @@ namespace Lanre.Tests.Integration.Controllers.Users
         {
             this._users = new List<User>()
             {
-                new User("Name1", "Surname1"),
-                new User("Name2", "Surname2"),
-                new User("Name3", "Surname3"),
-                new User("Name4", "Surname4"),
-                new User("Name5", "Surname5"),
+                User.Create("Name1", "Surname1").Value,
+                User.Create("Name2", "Surname2").Value,
+                User.Create("Name3", "Surname3").Value,
+                User.Create("Name4", "Surname4").Value,
+                User.Create("Name5", "Surname5").Value,
             };
         }
 
